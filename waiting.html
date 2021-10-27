@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="waiting.css">
+    <title>목목술</title>
+    <script src="/jquery.js"></script>
+    <script>
+       /**/
+       $(function(){
+        $(".send-message").on("click",function(){
+            SendMessage();
+        });
+
+        $(document).on('keydown','#msg',function(e){
+            if(e.keyCode==13&&!e.shiftKey){
+                e.preventDefault();
+                SendMessage();
+            }
+        })
+
+        function SendMessage(){
+            var senderChat=$("section div.chat ul li").clone();
+            /*
+                현재 로그인 정보 어케 알지?
+                서버에 요청을 해서 가져오나?                
+            */
+            var direction = "right"
+            var message = $("#msg").val();
+           
+            if(message==="")
+                return;
+            senderChat.addClass(direction);            
+            
+            senderChat.find('.sender span').text("sneder");
+            senderChat.find('.msg pre').text(message);
+
+            $('.chat-box ul').append(senderChat);
+            
+            direction = "left"
+
+            var receverChat=$("section div.chat ul li").clone();
+            receverChat.addClass(direction);            
+            
+            receverChat.find('.sender span').text("user1");
+            receverChat.find('.msg pre').text("message-user1");
+
+            $('.chat-box ul').append(receverChat);
+
+            $("#msg").val('');
+            $('.chat-box').scrollTop($('.chat-box').prop('scrollHeight'));
+        }
+       });
+
+       $(function(){        
+        $('#select-menu').on("click",function(){
+            $(".menu-select-popup").show();
+        });
+
+        $('#cancle').on("click",function(){
+            $(".menu-select-popup").hide();
+            $("#menu-name").val('');
+            $("#salt-num").val('');
+        })
+
+        $('#confirm').on("click",function(){
+            /*
+                서버에 메뉴와 Salt value 전달
+                클라이언트 프로필 아래쪽에 메뉴와 salt 표시
+                어떤 사용자가 어떤 메뉴와 salt를 입력했다는 메시지 chat 박스에 출력
+            */
+            $(".menu-select-popup").hide();
+            $("#menu-name").val("");
+            $("#salt-num").val("");
+        })
+       });
+
+    </script>   
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logout-button-area">
+                <input type="button" class="logout" id="logout" value="X" onclick="location.href='login.html'">
+            </div>
+            <div class="select-menu-button-area">
+                <input type="button" class="select-menu" id="select-menu" value="메뉴 선택">
+            </div>
+            <div class="show-result-button-area">
+                <input type="button" class="show-result" id="show-result" value="결과 보기">
+            </div>
+        </header>
+        <section>
+            <div class="chat-box">
+                <ul>
+                </ul>
+            </div>
+            
+            <div class="input-message-area">
+                <div class="input-message-area-wrapper">
+                    <textarea id = "msg"></textarea>
+                    <input type="button" class="send-message" value="메시지 보내기">        
+                </div>
+            </div>
+
+            <!-- 채팅 포멧 -->
+            <div class ="chat">
+                <ul>
+                    <li>
+                        <div class="sender">
+                            <img src="profile-user.png" id="profile-image" alt="">
+                            <span id="sender-name"></span>
+                        </div>
+                        <div class="msg">
+                            <pre></pre>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+        </section>
+       
+    </div>
+     <!-- 레이어 팝업 창  -->
+     <div class="menu-select-popup">
+        <h1>메뉴 선택</h1>
+        <div class="menu-area">
+            <h3>메뉴</h3>
+            <input type="text" name="menu-name" id="menu-name">
+        </div>
+        <div class="salt-area">
+            <h3>Salt</h3>
+            <input type="number" name="salt-num" id="salt-num">
+        </div>
+        <div class="confirm-cancle-area">
+            <button id="confirm">확인</button>
+            <button id="cancle">취소</button>
+        </div>
+    </div>
+</body>
+</html>

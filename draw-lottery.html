@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="draw-lottery.css">
+    <title>목목술</title>
+    <script src="/jquery.js"></script>
+    <script>
+        $(function(){
+           
+           var idx =2;
+           var temp = setInterval(function(){
+               chage()
+           },100);
+        
+           setTimeout(function(){
+               clearTimeout(temp);
+           },10000)
+          
+           function chage()
+           {
+               if(idx==5)
+               {
+                   idx =1;
+               }
+               console.log("실행");
+               var img="url(pic"+idx+".png)";
+               $("#image-area").css({"background-image":img});
+               idx++;
+           }
+
+        })
+
+        
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="title">
+                <div class="title-wrapper">
+                    <h1 id="title1">추</h1>
+                    <h1 id="title2">첨</h1>
+                    <h1 id="title3">중</h1>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div id="image-area">
+
+            </div>
+        </section>
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>

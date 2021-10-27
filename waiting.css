@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-image: url(petit.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.wrapper{
+    height: 100%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+header{
+    height: 5%;
+    background-color: yellow;
+}
+
+header .logout-button-area{
+    width: 20%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .select-menu-button-area{
+    width: 60%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+header .show-result-button-area{
+    width: 20%;
+    height: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section{
+    float: none;
+    height: 95%;
+    position: relative;
+}
+
+section .chat-box{
+    overflow:auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+section .chat-box ul{
+    width: 100%;
+    list-style: none;
+}
+
+section .chat-box ul li{
+    width: 100%;
+}
+
+section .chat-box ul li.left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+section .chat-box ul li.right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+section .chat-box ul li .sender
+{
+    display: flex;
+    justify-content:flex-end;
+    margin: 5px;
+}
+
+section .chat-box ul li .sender #sender-name{  
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+section .chat-box ul li .sender #profile-image{
+    width: 30px;
+}
+
+section .chat-box ul li > div.msg{
+    max-width: 75%;
+    border: 1px solid #888;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #FCFCFC;
+    color: #555;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+section .chat-box ul li .msg pre{
+    white-space: pre-wrap;
+}
+
+section .chat-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-color: #88bbff;
+}
+
+section .input-message-area{ 
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 90%;
+    left: 0;
+}
+
+section .input-message-area .input-message-area-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+section .input-message-area .input-message-area-wrapper > textarea{
+    position :absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    padding: 5px;
+    box-sizing:border-box;
+    resize: none;
+}
+
+section .input-message-area .input-message-area-wrapper .send-message{
+    position :absolute;
+    top: 0;
+    left: 70.2%;
+    width: 29.8%;
+    height: 100%;
+}
+
+.chat{
+    display: none;
+}
+
+body .menu-select-popup{
+    margin: 0 auto;
+    position:absolute;
+    left: 25%;
+    top: 0px;
+}
+
+.menu-select-popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FCFCFC;
+    border: 2px;
+    border-style: solid;
+    width: 50%;
+    display:none;
+}
+
+.menu-select-popup h1{
+    margin: 5px;
+    text-align: center;
+}
+
+.menu-select-popup .menu-area{
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-select-popup .salt-area{
+    margin:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-select-popup .confirm-cancle-area{
+    margin: 5px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
