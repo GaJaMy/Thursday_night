@@ -7,7 +7,7 @@ body{
     margin:0;
     padding: 0;
     height: 100vh;
-    background-image: url(./01/images/petit.jpg);
+    background-image: url(../Resource/petit.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

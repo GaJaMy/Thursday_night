@@ -5,7 +5,7 @@
 
 body{
     height: 100vh;
-    background-image: url(petit.jpg);
+    background-image: url(../Resource/petit.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

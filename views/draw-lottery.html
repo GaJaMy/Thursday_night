@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="draw-lottery.css">
     <title>목목술</title>
-    <script src="/jquery.js"></script>
+    <script src="../JqueryModule/jquery.js"></script>
     <script>
         $(function(){
            
@@ -25,8 +25,8 @@
                {
                    idx =1;
                }
-               console.log("실행");
-               var img="url(pic"+idx+".png)";
+               console.log("실행"+"url(..\\Resource\\pic"+idx+".png)");
+               var img="url(../Resource/pic"+idx+".png)";
                $("#image-area").css({"background-image":img});
                idx++;
            }
