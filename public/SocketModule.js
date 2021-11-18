@@ -1,9 +1,39 @@
-const webSocket = new WebSocket("");
+var socket = null;
 
-webSocket.onopen = ()=>{
-    console.log("서버 연결 성공");
+$(()=>{
+    
+    socket = io.connect('http://localhost:3000',{cors:{origin:'*'}});
+
+    socket.on("receiveMsg",(data) => {
+        var obj = JSON.parse(data);
+        ReceiveMessage(obj.nickname,obj.msg);
+    });
+
+});
+
+
+var sendMsg = () => {
+    if(socket != null) {
+        var msg = $("#msg").val();
+
+        if(msg.trim().length > 0) {
+            socket.emit("sendMsg", msg);
+        }
+    }
+};
+
+var sendMenu = () => {
+    if(socket!=null)
+    {       
+        var menu = $("#menu-name").val();
+        socket.emit("sendPick",menu);
+    }
 }
 
-webSocket.onmessage = function(event){
-    console.log("서버에서 받음 이벤트 Name : ");
+var sendSalt = () => {
+    if(socket!=null)
+    {
+        var salt = $("#salt-num").val();
+        socket.emit("sendSalt",salt);
+    }
 }

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="waiting.css">
     <title>목목술</title>
     <script src="../JqueryModule/jquery.js"></script>
+    <script src = "../node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src = "../public/SocketModule.js"></script>
     <script>
        /**/
        $(function(){
@@ -24,9 +26,11 @@
         function SendMessage(){
             var senderChat=$("section div.chat ul li").clone();
             /*
-                현재 로그인 정보 어케 알지?
-                서버에 요청을 해서 가져오나?                
+                현재 로그인 정보 어케 알지?                
             */
+            sendMsg();
+
+
             var direction = "right"
             var message = $("#msg").val();
            
@@ -37,20 +41,23 @@
             senderChat.find('.sender span').text("sneder");
             senderChat.find('.msg pre').text(message);
 
-            $('.chat-box ul').append(senderChat);
+            $('.chat-box ul').append(senderChat);            
             
+            $("#msg").val('');
+            $('.chat-box').scrollTop($('.chat-box').prop('scrollHeight'));
+        }
+
+        function ReceiveMessage(name,receive)
+        {
             direction = "left"
 
             var receverChat=$("section div.chat ul li").clone();
             receverChat.addClass(direction);            
             
-            receverChat.find('.sender span').text("user1");
-            receverChat.find('.msg pre').text("message-user1");
+            receverChat.find('.sender span').text(name);
+            receverChat.find('.msg pre').text(receive);
 
             $('.chat-box ul').append(receverChat);
-
-            $("#msg").val('');
-            $('.chat-box').scrollTop($('.chat-box').prop('scrollHeight'));
         }
        });
 
@@ -66,6 +73,8 @@
         })
 
         $('#confirm').on("click",function(){
+            sendMenu();
+            sendSalt();
             /*
                 서버에 메뉴와 Salt value 전달
                 클라이언트 프로필 아래쪽에 메뉴와 salt 표시
