@@ -55,9 +55,22 @@ section{
 }
 
 section .chat-box{
-    overflow:auto;
+    overflow:scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+section .chat-box::-webkit-scrollbar{
+    width: 8px;
+}
+
+section .chat-box::-webkit-scrollbar-thumb{
+    background-color: rgba(165, 161, 161, 0.5);
+    border-radius: 8px;
+}
+
+section .chat-box::-webkit-scrollbar-track{
+    border-radius: 8px;
 }
 
 section .chat-box ul{
@@ -81,6 +94,17 @@ section .chat-box ul li.right{
     align-items: flex-end;
 }
 
+section .chat-box ul li.center{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #518cd8;
+    opacity: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;   
+}
+
 section .chat-box ul li .sender
 {
     display: flex;
@@ -89,14 +113,14 @@ section .chat-box ul li .sender
 }
 
 section .chat-box ul li .sender #sender-name{  
-    height: 30px;
+    height: 25px;
     text-align: center;
     font-weight: bold;
     margin-left: 5px;
 }
 
 section .chat-box ul li .sender #profile-image{
-    width: 30px;
+    width: 25px;
 }
 
 section .chat-box ul li > div.msg{
@@ -160,6 +184,10 @@ section .input-message-area .input-message-area-wrapper .send-message{
 
 .chat{
     display: none;
+}
+
+.enterOthers{
+    display:none;
 }
 
 body .menu-select-popup{
